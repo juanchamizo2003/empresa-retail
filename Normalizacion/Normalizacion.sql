@@ -145,3 +145,132 @@ CREATE TABLE Plantas_Ubicacion (
     FOREIGN KEY (LOCATION_CODE) REFERENCES Ubicaciones(LOCATION_CODE),
     FOREIGN KEY (PLANT_CODE) REFERENCES Plantas(PLANT_CODE)
 );
+
+USE Gestion_Pedidos;
+
+INSERT INTO Clientes (ID_CLIENTE, NOM_CLIENTE, ESTADO) VALUES
+(101, 'MARTI', 'CA'),
+(107, 'HERMAN', 'WI'),
+(110, 'WE-SPORTS', 'MI');
+
+INSERT INTO Items (NUM_ITEM, DESC_ITEM, PRECIO) VALUES
+(3786, 'RED', 35.00),
+(4011, 'RAQUETA', 65.00),
+(9132, 'PAQ-3', 4.75),
+(5794, 'PAQ-6', 5.00),
+(3142, 'FUNDA', 10.00);
+
+INSERT INTO Ordenes (ID_ORDEN, FECHA, ID_CLIENTE) VALUES
+(2301, '2/23/03', 101),
+(2302, '2/25/03', 107),
+(2303, '2/27/03', 110);
+
+INSERT INTO Detalle_Orden (ID_ORDEN, NUM_ITEM, CANT) VALUES
+(2301, 3786, 3),
+(2301, 4011, 6),
+(2301, 9132, 8),
+(2302, 5794, 4),
+(2303, 4011, 2),
+(2303, 3142, 2);
+
+
+USE Gestion_Peliculas_Alquiladas;
+
+INSERT INTO Clientes (ID_CLIENTE, FIRST_NAME, LAST_NAME, SALUTATION) VALUES
+(1, 'Janet', 'Jones', 'Ms.'),
+(2, 'Robert', 'Phil', 'Mr.');
+
+INSERT INTO Direcciones (ID_PHYSICAL_ADDRESS, PHYSICAL_ADDRESS, ID_CLIENTE) VALUES
+('1PR', 'First Street Plot No 4', 1),
+('2PR', '3rd Street 34', 2),
+('3PR', '5th Avenue', 2);
+
+INSERT INTO Peliculas (ID_MOVIE, MOVIE_TITLE) VALUES
+('1P', 'Pirates of the Caribbean'),
+('2P', 'Clash of the Titans'),
+('3P', 'Forgetting Sarah Marshal'),
+('4P', 'Daddy''s Little Girls');
+
+INSERT INTO Renta_Peliculas (ID_CLIENTE, ID_MOVIE) VALUES
+(1, '1P'),
+(1, '2P'),
+(2, '3P'),
+(2, '4P'),
+(2, '2P');
+
+
+USE Gestion_Tienda_Tecnologia;
+
+INSERT INTO Clientes (CUSTOMER_ID, FIRST_NAME, LAST_NAME) VALUES
+(101, 'John', 'Doe'),
+(102, 'Jane', 'Smith'),
+(103, 'Alice', 'Brown');
+
+INSERT INTO Productos (PRODUCT_ID, PRODUCT_NAME) VALUES
+(1, 'Laptop'),
+(2, 'Mouse'),
+(3, 'Tablet'),
+(4, 'Keyboard'),
+(5, 'Monitor'),
+(6, 'Pen');
+
+INSERT INTO Compras (CUSTOMER_ID, PRODUCT_ID) VALUES
+(101, 1),
+(101, 2),
+(102, 3),
+(103, 4),
+(103, 5),
+(103, 6);
+
+
+USE Gestion_Biblioteca;
+
+INSERT INTO Clientes (CLIENTE_ID, FIRST_NAME, LAST_NAME, CUSTOMER_EMAIL, CUSTOMER_ADDRESS) VALUES
+('C1', 'John', 'Smith', 'john@email.com', '123 Main St, Boston, MA 02101'),
+('C2', 'Jane', 'Doe', 'jane@email.com', '456 Oak Avenue, Portland, OR 97201'),
+('C3', 'Sarah', 'Johnson', 'sarah.j@company.com', '789 Pine Street, Seattle, WA 98101');
+
+INSERT INTO Libros (BOOK_ID, BOOK_TITLE, BOOK_AUTHOR) VALUES
+(1, 'Database Design Principles', 'C.J. Date'),
+(2, 'SQL Cookbook', 'Anthony Molinaro'),
+(3, 'Advanced SQL Techniques', 'Joe Celko');
+
+INSERT INTO Ordenes (ORDER_ID, CLIENTE_ID, ORDER_DATE) VALUES
+(1, 'C1', '2024-01-15'),
+(2, 'C1', '2024-01-20'),
+(3, 'C2', '2024-01-18'),
+(4, 'C1', '2024-02-01'),
+(5, 'C3', '2024-02-03');
+
+INSERT INTO Detalle_Orden (ORDER_ID, BOOK_ID, QUANTITY, PRECIO_VENTA) VALUES
+(1, 1, 2, 45.99),
+(1, 2, 1, 39.99),
+(2, 1, 1, 46.99),
+(3, 2, 1, 35.99),
+(4, 3, 1, 52.99),
+(5, 1, 3, 45.99);
+
+
+USE Gestion_Vivero;
+
+INSERT INTO Ubicaciones (LOCATION_CODE, LOCATION_NAME) VALUES
+(11, 'Kirstenbosch Gardens'),
+(12, 'Karbonkelberg Mountains');
+
+INSERT INTO Categorias_Suelo (SOIL_CATEGORY, SOIL_DESCRIPTION) VALUES
+('A', 'Sandstone'),
+('B', 'Sandstone/limestone'),
+('C', 'Limestone');
+
+INSERT INTO Plantas (PLANT_CODE, PLANT_NAME, SOIL_CATEGORY) VALUES
+(431, 'Leucadendron', 'A'),
+(446, 'Protea', 'B'),
+(482, 'Erica', 'C'),
+(449, 'Restio', 'B');
+
+INSERT INTO Plantas_Ubicacion (LOCATION_CODE, PLANT_CODE) VALUES
+(11, 431),
+(11, 446),
+(11, 482),
+(12, 431),
+(12, 449);
